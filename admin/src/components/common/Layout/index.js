@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer } from '@mui/material';
+import { CssBaseline, Drawer, Box, Container } from '@mui/material';
 
 import Navbar from '../Navbar';
 
@@ -14,18 +14,23 @@ const Layout = ({ children }) => {
   return (
     <div>
       <React.Fragment>
-          <Navbar handleSidebar={handleSidebar} />
+        <Navbar handleSidebar={handleSidebar} /> <Drawer
+          anchor="left"
+          open={sidebar}
+          onClose={handleSidebar}
+        >
+          <div style={{width: 280}}>
+            <p>Nav items</p>
+          </div>
+        </Drawer>
+
+        {/* Main Content */}
+        <CssBaseline />
+        <Container maxWidth="lg">
           {children}
-          <Drawer
-            anchor="left"
-            open={sidebar}
-            onClose={handleSidebar}
-          >
-            <div style={{width: 280}}>
-              <p>Nav items</p>
-            </div>
-          </Drawer>
-        </React.Fragment>
+        </Container>
+         
+      </React.Fragment>
     </div>
   );
 }

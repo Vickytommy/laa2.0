@@ -7,6 +7,8 @@ import {
 import { AllRoutes } from "./routes";
 import Layout from "./components/common/Layout";
 import Dashboard from "./components/Dashboard";
+import Courses from "./components/Courses";
+import CourseDetails from "./components/CourseDetails";
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
       <Layout>
         <BrowserRouter >
           <Routes>
-            <Route path={AllRoutes.Dashboard.path} element={<Dashboard />} />
+            <Route exact path={AllRoutes.Dashboard.path} element={<Dashboard />} />
+            <Route exact path={AllRoutes.Courses.path} element={<Courses />} />
+            <Route path={`${AllRoutes.CourseDetails.path(':id')}`} element={<CourseDetails />} />
           </Routes>
         </BrowserRouter>
       </Layout>
