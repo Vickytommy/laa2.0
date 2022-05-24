@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from marketplace.admin import marketplace_admin_site
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),   # Default URL for Admin
+    # path('marketplaceadmin/', marketplace_admin_site.urls),
+    # path('/', admin.site.urls),
 ]
+
+admin.site.index_title = "LAA"
+admin.site.site_header = "LiGHT Automation Admin"
+admin.site.site_title = "Admin"
