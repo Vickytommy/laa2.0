@@ -23,14 +23,13 @@ const Layout = ({ children }) => {
             <p>Nav items</p>
           </div>
         </Drawer>
-
-        {/* Main Content */}
-        <CssBaseline />
-        <Container maxWidth="lg">
-          {children}
-        </Container>
-         
       </React.Fragment>
+
+      {/* Main Content */}
+      <CssBaseline />
+      <Container disableGutters maxWidth={false}>
+        {children}
+      </Container>
     </div>
   );
 }
