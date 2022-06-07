@@ -4,12 +4,12 @@ from django.contrib import admin
 from . import models
 
 # Register your models here.
-class BlogAdminArea(admin.AdminSite):
-  site_header = 'Market Place Admin Area'
-
-
-blog_admin_site = BlogAdminArea(name="Blog Admin")
-
 # blog_admin_site.register(models.Blog)
 
-admin.site.register(models.Blog)
+admin.site.register(models.Post)
+
+# @admin.register(models.Post)
+# class PostAdmin(admin.ModelAdmin):
+#   fields = ['title', 'author']
+
+# admin.site.register(Post, PostAdmin)
