@@ -11,6 +11,7 @@ class Course(models.Model):
   title = models.CharField(max_length=100)
   created_at = models.DateTimeField(default=timezone.now)
   description = models.TextField()
+  profile_image = models.FileField(upload_to='poster_images')
   status = models.CharField(max_length=10, choices=status_options, default='in_review')
   price = models.IntegerField()
 
@@ -43,6 +44,32 @@ class Lesson(models.Model):
   class Meta:
     verbose_name = ("Lesson")
     verbose_name_plural = ("Lessons")
+
+  def __str__(self):
+      return self.title
+
+
+class Video(models.Model):
+  status_options = (
+    ('in_review', 'In_review'),
+    ('active', 'Active'),
+  )
+
+  title = models.CharField(max_length=100)
+  course = models.ForeignKey(Course, on_delete=models.CASCADE)
+  lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+  created_at = models.DateTimeField(default=timezone.now)
+  description = models.TextField()
+  video_file = models.FileField(upload_to='course_videos', null=True, blank="True")
+  sequence = models.PositiveSmallIntegerField(
+    unique=True, help_text='This is the order in which the videos should be watched.<br />Note: Two videos can\'t have the same sequence')
+  status = models.CharField(max_length=10, choices=status_options, default='in_review', help_text='Change to active if you want users to view it')
+
+
+  
+  class Meta:
+    verbose_name = ("Video")
+    verbose_name_plural = ("Videos")
 
   def __str__(self):
       return self.title

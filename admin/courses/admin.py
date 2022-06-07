@@ -4,6 +4,7 @@ from . import models
 # Register all models at once
 admin.site.register(models.Course)
 admin.site.register(models.Lesson)
+admin.site.register(models.Video)
 
 # for model in models:
 #   try:
